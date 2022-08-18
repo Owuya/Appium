@@ -1,0 +1,84 @@
+Login Button:
+//*[contains(@class,'android.widget.TextView')][contains(@text,'LOGGA IN')]
+
+Username input field:
+(//*[contains(@class,'android.widget.EditText')])[1]
+
+Password inout field:
+(//*[contains(@class,'android.widget.EditText')])[2]
+
+Onboarding - Nästa steg:
+//*[contains(@class,'android.widget.TextView')][contains(@text,'NÄSTA STEG')]
+
+Onboarding - Börja använda appen:
+//*[contains(@class,'android.widget.TextView')][contains(@text,'BÖRJA ANVÄNDA APPEN')]
+
+Inventory onboarding - Stäng:
+//*[contains(@class,'android.widget.TextView')][contains(@text,'Stäng')]
+
+Home - Mitt konto:
+//*[contains(@class,'android.widget.TextView')][contains(@text,'Mitt konto')]
+
+Mitt konto - Lägg till kundnummer:
+//*[contains(@class,'android.widget.TextView')][contains(@text,'Lägg till kundnummer')]
+
+Lägg till kundnummer - Username input field:
+(//*[contains(@class,'android.widget.EditText')])[1]
+
+Lägg till kundnummer - Password input field:
+(//*[contains(@class,'android.widget.EditText')])[2]
+
+Lägg till kundnummer - Lägg till buttton:
+//*[contains(@class,'android.widget.TextView')][contains(@text,'LÄGG TILL')]
+//*[contains(@class,'android.view.ViewGroup')][contains(@resource-id,'LoginFormSubmitButton')]
+
+Mitt konto - Hyllkanstetiketter
+//*[contains(@class,'android.widget.TextView')][contains(@text,'Hyllkantsetiketter')]
+
+Mitt konto - Logga ut
+//*[contains(@class,'android.widget.TextView')][contains(@text,'LOGGA UT')]
+
+Mitt konto - Logga ut från appen
+//*[contains(@class,'android.widget.TextView')][contains(@text,'LOGGA UT FRÅN APPEN')]
+
+Hyllkantsetiketter - Sök Fält:
+//*[contains(@class,'android.widget.EditText')][contains(@text,'Sök')]
+
+Hyllkantsetiketter - 1 resultat:
+//*[contains(@class,'android.view.ViewGroup')][contains(@resource-id,'TouchableOpacitySearchResultItem')][@index='3']
+
+Hyllkantsetiketter - Lägg till:
+//*[contains(@class,'android.widget.TextView')][contains(@text,'LÄGG TILL')]
+
+Hyllkantsetiketter - Beställ:
+//*[contains(@class,'android.widget.TextView')][contains(@text,'BESTÄLL')]
+
+Hyllkantsetiketter - Email text fält:
+//*[contains(@class,'android.widget.EditText')]
+
+Hyllkantsetiketter - Skicka beställning:
+//*[contains(@class,'android.widget.TextView')][contains(@text,'SKICKA BESTÄLLNING')]
+
+Hyllkantsetiketter - suscces:
+//*[contains(@class,'android.widget.TextView')][contains(@text,'Din order är skapad')]
+
+Hyllkantsetiketter - succes 2:
+//*[contains(@class,'android.widget.TextView')][contains(@text,'Inom kort kommer dina etiketter till din mejl. Om mejlet inte dyker upp kan du behöva kolla din skräpkorg.')]
+
+Hyllkantsetiketter - Skapa ny beställning:
+//*[contains(@class,'android.widget.TextView')][contains(@text,'SKAPA NY ORDER')]
+
+________________________
+
+Not implemented..:
+Select customer for order shelflabel:
+//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]
+
+link to profile page - nr2 in list:
+//*[contains(@class,'android.view.ViewGroup')][@index='7']
+
+Button - To logout - Customer info page:
+
+
+
+Button - To logout from list - Select customer to logout - My account page:
