@@ -52,6 +52,13 @@ public class MyAccountPage {
         return scrollView;
     }*/
 
+
+
+     WebElement selectCustomerForShelflabelElement() throws InterruptedException {
+        WebElement selectCustomerElement = appium.GetElementByXpath("//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]", 7000);
+        return selectCustomerElement;
+    }
+
     private WebElement logoutFromAppButtonElement() throws InterruptedException {
         WebElement logoutFromAppButton = appium.GetElementByXpath("//*[contains(@class,'android.widget.TextView')][contains(@text,'LOGGA UT FRÅN APPEN')]",7000);
         return logoutFromAppButton;
@@ -62,6 +69,10 @@ public class MyAccountPage {
     }
     public void ClickShelflableMenu() throws InterruptedException {
         shelflableElement().click();
+    }
+
+    public void ClickSelectCustomer() throws InterruptedException {
+        selectCustomerForShelflabelElement().click();
     }
 
     public void ClickLogoutButton() throws InterruptedException {

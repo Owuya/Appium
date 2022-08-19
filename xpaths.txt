@@ -68,17 +68,17 @@ Hyllkantsetiketter - succes 2:
 Hyllkantsetiketter - Skapa ny beställning:
 //*[contains(@class,'android.widget.TextView')][contains(@text,'SKAPA NY ORDER')]
 
+Select customer for order shelflabel:
+//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]
 ________________________
 
 Not implemented..:
-Select customer for order shelflabel:
-//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]
 
 link to profile page - nr2 in list:
 //*[contains(@class,'android.view.ViewGroup')][@index='7']
 
 Button - To logout - Customer info page:
-
-
+//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[7]
 
 Button - To logout from list - Select customer to logout - My account page:
+//*[contains(@class,'android.view.ViewGroup')][contains(@resource-id,'LogoutSingleContactButton_570431')]

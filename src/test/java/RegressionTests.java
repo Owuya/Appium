@@ -14,7 +14,6 @@ public class RegressionTests extends Appium {
         Thread.sleep(3000);
         loginPage.Onboarding();
     }
-
     @Test(description = "Loggar in med en masterkund och loggar sedan in med alla Subkunder", priority = 2)
     public void LoginWithMasterAndSubCustomers() throws InterruptedException {
         Thread.sleep(3000);
@@ -31,6 +30,8 @@ public class RegressionTests extends Appium {
         myAccountPage.ClickAddCustomerNumberMenu();
         addCustomerPage.Login("434477", "434477");
         System.out.println("Logged in with 434477");
+        Thread.sleep(3000);
+        homePage.ClickMyAccount();
     }
 
     @Test(description = "Loggar in med en SVH kund och beställer shelflabel", priority = 3)
@@ -84,8 +85,9 @@ public class RegressionTests extends Appium {
         homePage.ClickMyAccount();
         myAccountPage.ClickAddCustomerNumberMenu();
         addCustomerPage.Login("520917", "520917");
-        System.out.println("Logged in with 444867");
+        System.out.println("Logged in with 520917");
         myAccountPage.ClickShelflableMenu();
+        myAccountPage.ClickSelectCustomer();
         shelflablePage.Search("Läkerol");
         shelflablePage.SearchResultClick();
         shelflablePage.AddButtonClick();
@@ -95,12 +97,12 @@ public class RegressionTests extends Appium {
         shelflablePage.CheckSuccess();
     }
 
-    @Test(description = "Logout a customer", priority = 6)
+    @Test(description = "Logout a customer from customer page", priority = 6)
     public void LogoutACustomerFromCustomerPage() throws InterruptedException {
 
     }
 
-    @Test(description = "Logout a customer", priority = 7)
+    @Test(description = "Logout a customer from my account page", priority = 7)
     public void LogoutACustomerFromMyAccountPage() throws InterruptedException {
 
     }
