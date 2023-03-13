@@ -13,9 +13,11 @@ What things you need to install the software and how to install them
 ```
 - Java
 - Maven
+- IntelliJ
 - Selenium
 - TestNG
 - Appium
+- Android Studio
 ```
 
 ### Installing
@@ -61,10 +63,16 @@ Give an example
 Add additional notes about how to deploy this on a live system
 
 ## Built With
+* [Maven](https://maven.apache.org/) - Dependency Management
+* [Appium](https://appium.io/) - **Automation for Apps:** Appium is an open source test automation framework for use with native, hybrid and mobile web apps.
+It drives iOS, Android, and Windows apps using the WebDriver protocol.
+* [Appium Inspector](https://github.com/appium/appium-inspector) - A GUI inspector for mobile apps and more
+* [IntelliJ]() - 
+* [Android Studio]()-
+
+
 
 * [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
 ## Contributing
 
@@ -72,7 +80,7 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+
 
 ## Authors
 
@@ -80,10 +88,11 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+No license
 
 ## Acknowledgments
 
+* **Björn Stålhammar, For startup and helping setup project, And all the help**
 * Hat tip to anyone whose code was used
 * Inspiration
 * etc
