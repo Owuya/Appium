@@ -40,12 +40,16 @@ Mitt konto - Logga ut
 
 Mitt konto - Logga ut från appen
 //*[contains(@class,'android.widget.TextView')][contains(@text,'LOGGA UT FRÅN APPEN')]
+//android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[2]
 
 Hyllkantsetiketter - Sök Fält:
 //*[contains(@class,'android.widget.EditText')][contains(@text,'Sök')]
+New: //*[contains(@class,'android.widget.EditText')][contains(@text,'Namn eller artikelnummer')]
 
 Hyllkantsetiketter - 1 resultat:
 //*[contains(@class,'android.view.ViewGroup')][contains(@resource-id,'TouchableOpacitySearchResultItem')][@index='3']
+New: //*[contains(@class,'android.view.ViewGroup')][contains(@resource-id,'TouchableOpacitySearchResultItem')][@index='2']
+
 
 Hyllkantsetiketter - Lägg till:
 //*[contains(@class,'android.widget.TextView')][contains(@text,'LÄGG TILL')]
@@ -68,17 +72,89 @@ Hyllkantsetiketter - succes 2:
 Hyllkantsetiketter - Skapa ny beställning:
 //*[contains(@class,'android.widget.TextView')][contains(@text,'SKAPA NY ORDER')]
 
-Select customer for order shelflabel:
+Hyllkantsetiketter - Scan button:
+//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]
+
+Hyllkantsetiketter - Clear search field
+//*[contains(@class,'android.view.ViewGroup')][contains(@resource-id,'searchInputEmptySearch')]
+
+Hyllkantsetiketter - Select customer for order shelflabel:
 //android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]
+
+link to profile page - nr2 in list:
+//*[contains(@class,'android.view.ViewGroup')][@index='4']
+
+Button - To logout - Customer info page:
+//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[8]
+
+Button - To logout from list - Select customer to logout - My account page:
+//*[contains(@class,'android.view.ViewGroup')][contains(@resource-id,'LogoutSingleContactButton_570431')]
+
+Menue items - xpath for app menue pages
+//android.view.ViewGroup/android.view.View/android.view.View[1]
+//android.view.ViewGroup/android.view.View/android.view.View[2]
+//android.view.ViewGroup/android.view.View/android.view.View[3]
+//android.view.ViewGroup/android.view.View/android.view.View[4]
+//android.view.ViewGroup/android.view.View/android.view.View[5]
+
+Invnetering:
+- Click on customer and expand and display pantries:
+//*[contains(@class,'android.widget.TextView')][contains(@text,'FALU LASARETT BUTIKEN')]
+
+- Click and open pantry named Marcus:
+//*[contains(@class,'android.widget.TextView')][contains(@text,'Marcus')]
+
+- Click and open Aladdin product:
+//*[contains(@class,'android.widget.TextView')][contains(@text,'Aladdin')]
+
+- Click "Ta bort" in Product modal:
+//*[contains(@class,'android.widget.TextView')][contains(@text,'Ta bort')]
+
+Click "TA BORT" in ta bort modal:
+//*[contains(@class,'android.widget.TextView')][contains(@text,'TA BORT')]
+
+Art.number: 111910
+
+Artikelsök:
+//*[contains(@class,'android.widget.EditText')][contains(@text,'Namn eller artikelnr')]
+
+- Textfield to enter Article number:
+//*[contains(@class,'android.widget.EditText')]
+
+- Click on product to open Productmodal:
+//*[contains(@class,'android.widget.TextView')][contains(@text,'Aladdin')]
+
+- Click button to add product to pantry:
+//*[contains(@class,'android.view.ViewGroup')][contains(@resource-id,'SubmittingStockCountButton')]
+
 ________________________
 
 Not implemented..:
 
-link to profile page - nr2 in list:
-//*[contains(@class,'android.view.ViewGroup')][@index='7']
+Snabborder:
+- Edit text:                               (To get out of keyboard)
+//*[contains(@class,'android.widget.TextView')][contains(@text,'0')]
 
-Button - To logout - Customer info page:
-//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[7]
 
-Button - To logout from list - Select customer to logout - My account page:
-//*[contains(@class,'android.view.ViewGroup')][contains(@resource-id,'LogoutSingleContactButton_570431')]
+- Filter buttons
+//*[contains(@class,'android.widget.TextView')][contains(@text,'Alla varor')]
+//*[contains(@class,'android.widget.TextView')][contains(@text,'Inventerade')]
+//*[contains(@class,'android.widget.TextView')][contains(@text,'Ej inventerade')]
+
+Ta bort notis:
+//*[contains(@class,'android.widget.TextView')][contains(@text,'är borttaget')]
+
+Lagts till notis:
+//*[contains(@class,'android.widget.TextView')][contains(@text,'har lagts till i skafferiet')]
+
+
+
+Inventering Offline:
+- Offline switch:
+//*[contains(@class,'android.widget.Switch')]
+
+- OK button, Offline Green notification message:
+//*[contains(@class,'android.widget.TextView')][contains(@text,'OK')]
+
+- First article in pantry, click to open productmodal
+//android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup

@@ -2,11 +2,6 @@ import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.touch.TouchActions;
-import org.openqa.selenium.remote.Response;
-
-import java.util.Map;
 
 import static io.appium.java_client.touch.TapOptions.tapOptions;
 import static io.appium.java_client.touch.offset.ElementOption.element;
@@ -21,12 +16,23 @@ public class HomePage {
 
     private WebElement myAccount() throws InterruptedException {
         //WebElement mycAccountElement = appium.GetElementByXpath("//*[contains(@class,'android.widget.TextView')][contains(@text,'Mitt konto')]",7000);
-        WebElement mycAccountElement = appium.GetElementByXpath("//android.view.View[4]",7000);
+        WebElement mycAccountElement = appium.GetElementByXpath("//android.view.ViewGroup/android.view.View/android.view.View[5]",7000);
         //WebElement mycAccountElement = appium.GetElementByXpath("//*[contains(@class,'android.widget.TextView')][contains(@text,'Till Mitt konto')]",7000);
         return mycAccountElement;
     }
 
-    public void ClickMyAccount() throws InterruptedException {
+    private WebElement myAccount2() throws InterruptedException {
+        WebElement mycAccountElement = appium.GetElementByXpath("//*[contains(@class,'android.widget.TextView')][contains(@text,'Mitt konto')]",7000);
+        return mycAccountElement;
+    }
+
+    private WebElement deliveriesPage() throws InterruptedException {
+        WebElement mycAccountElement = appium.GetElementByXpath("//*[contains(@class,'android.widget.TextView')][contains(@text,'Leveranser')]",7000);
+
+        return mycAccountElement;
+    }
+
+    public void clickMyAccount() throws InterruptedException {
         int x = myAccount().getLocation().getX();
         int y = myAccount().getLocation().getY();
 
@@ -64,5 +70,11 @@ public class HomePage {
         myAccount().click();
     }
 
+    public void clickMyAccount2() throws InterruptedException {
+        myAccount2().click();
+    }
 
+    public void clickDeliveries() throws InterruptedException {
+        deliveriesPage().click();
+    }
 }

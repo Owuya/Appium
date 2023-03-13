@@ -8,11 +8,13 @@ public class AddCustomerPage {
 
     }
     private WebElement addCustomerNumber() throws InterruptedException {
-        WebElement addCustomerNumber = appium.GetElementByXpath("(//*[contains(@class,'android.widget.EditText')])[1]",6000);
+        //WebElement addCustomerNumber = appium.GetElementByXpath("(//*[contains(@class,'android.widget.EditText')])[1]",6000);
+        WebElement addCustomerNumber = appium.GetElementByXpath("//*[contains(@class,'android.widget.EditText')][contains(@resource-id,'LoginFormUsernameInput')]",6000);
         return addCustomerNumber;
     }
     private WebElement addCustomerPassword() throws InterruptedException {
-        WebElement addCustomerPassword = appium.GetElementByXpath("(//*[contains(@class,'android.widget.EditText')])[2]",6000);
+        //WebElement addCustomerPassword = appium.GetElementByXpath("(//*[contains(@class,'android.widget.EditText')])[2]",6000);
+        WebElement addCustomerPassword = appium.GetElementByXpath("//*[contains(@class,'android.widget.EditText')][contains(@resource-id,'LoginFormPasswordInput')]",6000);
         return addCustomerPassword;
     }
     private void EnterUsername(String password) throws InterruptedException {

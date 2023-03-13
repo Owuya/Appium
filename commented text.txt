@@ -1,0 +1,56 @@
+
+    /*@AndroidFindBy(xpath = "//*[contains(@class,'android.widget.TextView')][contains(@text,'Lägg till kundnummer')]")
+    WebElement element;*/
+	
+	
+	    /*WebElement scrollToProfileLogoutButton() throws InterruptedException {
+//        WebElement scrollView = appium.driver.findElement(MobileBy.AndroidUIAutomator(
+//                "new UiScrollable(new UiSelector().scrollable(true))" +
+//                        ".scrollIntoView(new UiSelector().classNameMatches(\"//*[contains(@class,'android.widget.ScrollView')]\"))"));
+        WebElement scrollView = appium.driver.findElement(MobileBy.AndroidUIAutomator(
+                "new UiScrollable(new UiSelector().scrollable(true))" +
+                        ".scrollIntoView(new UiSelector().resourceId(\"ProfileLogoutButton\"))"));
+        System.out.println(scrollView);
+        System.out.println("Trying to scroll");
+        return scrollView;
+    }*/
+	
+	
+	
+	    //public void ScrollPage(WebElement element) throws InterruptedException {
+        //System.out.println("Inside MyAccountPage.Scrollpage()");
+       // System.out.println("WebElement:" + element);
+     //   appium.scrollPage(element);
+    //}
+
+    /*public void scrollPage() throws InterruptedException {
+        Dimension dim = appium.driver.manage().window().getSize();
+        System.out.println("Screen dimensions: " + dim);
+        int height = dim.getHeight();
+        int width = dim.getWidth();
+        int x = width/2;
+        int top_y = (int)(height*0.80);
+        int bottom_y = (int)(height*0.20);
+        System.out.println("coordinates :" + x + "  "+ top_y + " "+ bottom_y);
+        TouchActions ts = new TouchActions(appium.driver);
+        System.out.println("Last step before it fails?");
+        //ts.clickAndHold().moveByOffset(x, bottom_y).release().perform();
+        //appium.driver.wait(3000);
+        ts.scroll(x, bottom_y);
+        ts.scrollToElement(logoutButtonElement());
+    }*/
+	
+	
+	
+	
+	
+	
+	        //System.out.println("-------------------------");
+        //System.out.println("isEnabled: " + logoutFromAppButtonElement().isEnabled());
+        //System.out.println("isDisplayed: " + logoutFromAppButtonElement().isDisplayed());
+        //System.out.println("isSelected: " + logoutFromAppButtonElement().isSelected());
+
+        //System.out.println("Attribute: " + logoutFromAppButtonElement().getTagName());
+
+        //System.out.println(logoutFromAppButtonElement());
+        //System.out.println("Trying to click button -->");

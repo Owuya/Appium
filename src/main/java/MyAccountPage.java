@@ -1,29 +1,28 @@
 import io.appium.java_client.MobileBy;
-import io.appium.java_client.PerformsTouchActions;
-import io.appium.java_client.TouchAction;
-import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import io.appium.java_client.touch.offset.PointOption;
-import org.openqa.selenium.Dimension;
+//import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.support.PageFactory;
-
-import static io.appium.java_client.touch.TapOptions.tapOptions;
+//import org.openqa.selenium.Dimension;
+//import org.openqa.selenium.interactions.touch.TouchActions;
 
 public class MyAccountPage {
 
     private Appium appium = new Appium();
-
-    /*@AndroidFindBy(xpath = "//*[contains(@class,'android.widget.TextView')][contains(@text,'Lägg till kundnummer')]")
-    WebElement element;*/
 
     public MyAccountPage() {
         PageFactory.initElements(new AppiumFieldDecorator(appium.driver),this);
     }
     private WebElement addCustomerNumberElement() throws InterruptedException {
         WebElement addCustomerNumber = appium.GetElementByXpath("//*[contains(@class,'android.widget.TextView')][contains(@text,'Lägg till kundnummer')]",7000);
+
         return addCustomerNumber;
+    }
+    private WebElement addCustomerNumberElement2() throws InterruptedException {
+        WebElement addCustomerNumber2 =  appium.driver.findElement(MobileBy.AndroidUIAutomator(
+                "new UiScrollable(new UiSelector().scrollable(true))" +
+                        ".scrollIntoView(new UiSelector().text(\"Lägg till kundnummer\"))"));
+        return addCustomerNumber2;
     }
     WebElement shelflableElement() throws InterruptedException {
         WebElement shelflableElement =  appium.driver.findElement(MobileBy.AndroidUIAutomator(
@@ -31,7 +30,18 @@ public class MyAccountPage {
                         ".scrollIntoView(new UiSelector().text(\"Hyllkantsetiketter\"))"));
         return shelflableElement;
     }
+    WebElement shelflableElementWithSleep() throws InterruptedException {
+        Thread.sleep(7000);
+        WebElement shelflableElementWithSleep =  appium.driver.findElement(MobileBy.AndroidUIAutomator(
+                "new UiScrollable(new UiSelector().scrollable(true))" +
+                        ".scrollIntoView(new UiSelector().text(\"Hyllkantsetiketter\"))"));
+        return shelflableElementWithSleep;
+    }
 
+    WebElement selectCustomerForShelflabelElement() throws InterruptedException {
+        WebElement selectCustomerElement = appium.GetElementByXpath("//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]", 7000);
+        return selectCustomerElement;
+    }
     WebElement logoutButtonElement() throws InterruptedException {
         WebElement logoutButton = appium.driver.findElement(MobileBy.AndroidUIAutomator(
                 "new UiScrollable(new UiSelector().scrollable(true))" +
@@ -39,43 +49,54 @@ public class MyAccountPage {
         //appium.GetElementByXpath("//*[contains(@class,'android.widget.TextView')][contains(@text,'LOGGA UT')]",7000);
         return logoutButton;
     }
+    private WebElement logoutFromAppButtonElement() throws InterruptedException {
+        //WebElement logoutFromAppButton = appium.GetElementByXpath("//*[contains(@class,'android.widget.TextView')][contains(@text,'LOGGA UT FRÅN APPEN')]",7000);
+        WebElement logoutFromAppButton = appium.GetElementByXpath("//android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[2]",7000);
+                                                                           //android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[2]
+        return logoutFromAppButton;
+    }
+    private WebElement customerLink() throws InterruptedException {
+        //link to profile page - nr2 in list:
 
-    /*WebElement scrollToProfileLogoutButton() throws InterruptedException {
-//        WebElement scrollView = appium.driver.findElement(MobileBy.AndroidUIAutomator(
-//                "new UiScrollable(new UiSelector().scrollable(true))" +
-//                        ".scrollIntoView(new UiSelector().classNameMatches(\"//*[contains(@class,'android.widget.ScrollView')]\"))"));
-        WebElement scrollView = appium.driver.findElement(MobileBy.AndroidUIAutomator(
-                "new UiScrollable(new UiSelector().scrollable(true))" +
-                        ".scrollIntoView(new UiSelector().resourceId(\"ProfileLogoutButton\"))"));
-        System.out.println(scrollView);
-        System.out.println("Trying to scroll");
-        return scrollView;
-    }*/
+        WebElement selectCustomerElement = appium.GetElementByXpath("//*[contains(@class,'android.view.ViewGroup')][@index='4']", 7000);
 
-
-
-     WebElement selectCustomerForShelflabelElement() throws InterruptedException {
-        WebElement selectCustomerElement = appium.GetElementByXpath("//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]", 7000);
         return selectCustomerElement;
     }
 
-    private WebElement logoutFromAppButtonElement() throws InterruptedException {
-        WebElement logoutFromAppButton = appium.GetElementByXpath("//*[contains(@class,'android.widget.TextView')][contains(@text,'LOGGA UT FRÅN APPEN')]",7000);
-        return logoutFromAppButton;
+    private WebElement stockCount() throws InterruptedException {
+        WebElement stockCountElement = appium.GetElementByXpath("//*[contains(@class,'android.widget.TextView')][contains(@text,'Inventering')]",7000);
+        return stockCountElement;
     }
 
     public void ClickAddCustomerNumberMenu() throws InterruptedException {
         addCustomerNumberElement().click();
     }
+    public void ClickAddCustomerNumberMenu2() throws InterruptedException {
+        addCustomerNumberElement2().click();
+    }
     public void ClickShelflableMenu() throws InterruptedException {
         shelflableElement().click();
+    }
+
+    public void ClickShelflableMenuAfterLogin() throws InterruptedException {
+        shelflableElementWithSleep().click();
     }
 
     public void ClickSelectCustomer() throws InterruptedException {
         selectCustomerForShelflabelElement().click();
     }
 
-    public void ClickLogoutButton() throws InterruptedException {
+    public void clickOnCustomer() throws InterruptedException {
+        customerLink().click();
+    }
+
+    public void clickStockCountPage() throws InterruptedException {
+        stockCount().click();
+    }
+
+
+
+    /*public void ClickLogoutButton() throws InterruptedException {
         //logoutButtonElement().click();
 
         int x = logoutButtonElement().getLocation().getX();
@@ -86,39 +107,33 @@ public class MyAccountPage {
         TouchAction action = new TouchAction((PerformsTouchActions) appium.driver)
                 .tap(tapOptions().withPosition(PointOption.point(x, y)));
         action.perform();
-    }
-
-    public void ClickLogoutFromAppButton() throws InterruptedException {
-        logoutFromAppButtonElement().click();
-    }
-
-    //public void ScrollPage(WebElement element) throws InterruptedException {
-        //System.out.println("Inside MyAccountPage.Scrollpage()");
-       // System.out.println("WebElement:" + element);
-     //   appium.scrollPage(element);
-    //}
-
-    /*public void scrollPage() throws InterruptedException {
-        Dimension dim = appium.driver.manage().window().getSize();
-        System.out.println("Screen dimensions: " + dim);
-        int height = dim.getHeight();
-        int width = dim.getWidth();
-        int x = width/2;
-        int top_y = (int)(height*0.80);
-        int bottom_y = (int)(height*0.20);
-        System.out.println("coordinates :" + x + "  "+ top_y + " "+ bottom_y);
-        TouchActions ts = new TouchActions(appium.driver);
-        System.out.println("Last step before it fails?");
-        //ts.clickAndHold().moveByOffset(x, bottom_y).release().perform();
-        //appium.driver.wait(3000);
-        ts.scroll(x, bottom_y);
-        ts.scrollToElement(logoutButtonElement());
     }*/
 
-    public void logout() throws InterruptedException {
+    /*public void ClickLogoutFromAppButton() throws InterruptedException {
+        logoutFromAppButtonElement().click();
+    }*/
+
+    /*public void logout() throws InterruptedException {
         //scrollToProfileLogoutButton();
         ClickLogoutButton();
         ClickLogoutFromAppButton();
+    }*/
+
+    public void logout() throws InterruptedException {
+        logoutButtonElement();
+        WebElement element = appium.GetElementByXpath("//*[contains(@class,'android.view.ViewGroup')][contains(@resource-id,'ProfileLogoutButton')]", 7000);
+        element.click();
+        //Thread.sleep(4000);
+        logoutFromAppButtonElement().click();
+        Thread.sleep(7000);
+    }
+    private WebElement logoutSpecificCustomerElement(String customerNr) throws InterruptedException {
+        WebElement logoutSpecific = appium.GetElementByXpath("//*[contains(@class,'android.view.ViewGroup')][contains(@resource-id,'LogoutSingleContactButton_"+customerNr+"')]", 7000);
+        return logoutSpecific;
     }
 
+    public void logoutSpecificCustomer(String customerNr) throws InterruptedException {
+        logoutButtonElement().click();
+        logoutSpecificCustomerElement(customerNr).click();
+    }
 }

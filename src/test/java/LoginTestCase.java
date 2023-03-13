@@ -15,7 +15,7 @@ public class LoginTestCase extends Appium {
         Thread.sleep(3000);
         //logout();
         loginPage.Onboarding();
-        inventoryOnboardPage.CloseInventoryOnboarding();
+        //inventoryOnboardPage.CloseInventoryOnboarding();
     }
 
     @Test(description = "Loggar in med en masterkund och loggar sedan in med alla Subkunder")
@@ -23,22 +23,23 @@ public class LoginTestCase extends Appium {
         //loginPage.Login("444867", "444867");
         //loginPage.Onboarding();
         //inventoryOnboardPage.CloseInventoryOnboarding();
-        homePage.ClickMyAccount();
+        homePage.clickMyAccount();
         //homePage.ClickMyAccount();
         myAccountPage.ClickAddCustomerNumberMenu();
-        addCustomerPage.Login("444867", "444867");
+        addCustomerPage.Login("444867", "444867");      // Falu Lassaret Butiken
         myAccountPage.ClickAddCustomerNumberMenu();
-        addCustomerPage.Login("570431", "570431");
+        addCustomerPage.Login("570431", "570431");      // Falu Lassaret 31060
         myAccountPage.ClickAddCustomerNumberMenu();
-        addCustomerPage.Login("404320", "404320");
-        myAccountPage.ClickAddCustomerNumberMenu();
+        addCustomerPage.Login("404320", "404320");      // Falu Lassaret cafeteria
+        Thread.sleep(7000);
+        myAccountPage.ClickAddCustomerNumberMenu2();
         addCustomerPage.Login("434477", "434477");
     }
 
-    public void logout() throws InterruptedException {
+    /*public void logout() throws InterruptedException {
         homePage.ClickMyAccount();
         myAccountPage.logout();
-    }
+    }*/
 
     //@Test(description = "Order shelf label")
     //public void shelf() throws InterruptedException {

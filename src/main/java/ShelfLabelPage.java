@@ -8,16 +8,20 @@ public class ShelfLabelPage {
 
     }
     private WebElement searchFieldElement() throws InterruptedException {
-        WebElement searchField = appium.GetElementByXpath("//*[contains(@class,'android.widget.EditText')][contains(@text,'Sök')]",6000);
+        WebElement searchField = appium.GetElementByXpath("//*[contains(@class,'android.widget.EditText')][contains(@text,'Namn eller artikelnummer')]",6000);
         return searchField;
     }
+    private WebElement scanButton() throws InterruptedException {
+        //WebElement searchField = appium.GetElementByXpath("//*[contains(@class,'android.widget.EditText')][contains(@text,'Sök')]",6000);
+        WebElement scanButton = appium.GetElementByXpath("//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup[2]",6000);
+        return scanButton;
+    }
     private WebElement searchResultElement() throws InterruptedException {
-        WebElement searchResult = appium.GetElementByXpath("//*[contains(@class,'android.view.ViewGroup')][contains(@resource-id,'TouchableOpacitySearchResultItem')][@index='3']",6000);
+        WebElement searchResult = appium.GetElementByXpath("//*[contains(@class,'android.view.ViewGroup')][contains(@resource-id,'TouchableOpacitySearchResultItem')][@index='2']",6000);
         return searchResult;
     }
-
     private WebElement fourthSearchResultElement() throws InterruptedException {
-        WebElement searchResult = appium.GetElementByXpath("//*[contains(@class,'android.view.ViewGroup')][contains(@resource-id,'TouchableOpacitySearchResultItem')][@index='9']",6000);
+        WebElement searchResult = appium.GetElementByXpath("//*[contains(@class,'android.view.ViewGroup')][contains(@resource-id,'TouchableOpacitySearchResultItem')][@index='8']",6000);
         return searchResult;
     }
     private WebElement addButtonElement() throws InterruptedException {
@@ -25,7 +29,7 @@ public class ShelfLabelPage {
         return addButton;
     }
     private WebElement orderButtonElement() throws InterruptedException {
-        WebElement orderButton = appium.GetElementByXpath("//*[contains(@class,'android.widget.TextView')][contains(@text,'BESTÄLL')]",6000);
+        WebElement orderButton = appium.GetElementByXpath("//*[contains(@class,'android.widget.TextView')][contains(@text,'BESTÄLL')]",8000);
         return orderButton;
     }
     private WebElement emailFieldElement() throws InterruptedException {
@@ -38,26 +42,43 @@ public class ShelfLabelPage {
     }
 
     private WebElement success() throws InterruptedException {
-        WebElement sucessMessege = appium.GetElementByXpath("//*[contains(@class,'android.widget.TextView')][contains(@text,'Din order är skapad')]", 7000);
-        return sucessMessege;
+        WebElement successMessage = appium.GetElementByXpath("//*[contains(@class,'android.widget.TextView')][contains(@text,'Din order är skapad')]", 7000);
+        return successMessage;
     }
     private WebElement makeNewOrderButtonElement() throws InterruptedException {
-        WebElement makeNewOrderButton = appium.GetElementByXpath("//*[contains(@class,'android.widget.TextView')][contains(@text,'SKAPA NY ORDER')]",6000);
-        //WebElement makeNewOrderButton = appium.GetElementByXpath("//android.view.ViewGroup/android.view.ViewGroup[3]",6000);
+        //WebElement makeNewOrderButton = appium.GetElementByXpath("//*[contains(@class,'android.widget.TextView')][contains(@text,'SKAPA NY ORDER')]",6000);
+        WebElement makeNewOrderButton = appium.GetElementByXpath("//android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup[2]",6000);
         return makeNewOrderButton;
     }
+    private WebElement clearSearchButtonElement() throws InterruptedException {
+        WebElement clearSearchButton = appium.GetElementByXpath("//*[contains(@class,'android.view.ViewGroup')][contains(@resource-id,'searchInputEmptySearch')]",6000);
+        return clearSearchButton;
+    }
+    private WebElement myAccount() throws InterruptedException {
+        WebElement mycAccountElement = appium.GetElementByXpath("//*[contains(@class,'android.widget.TextView')][contains(@text,'Mitt konto')]",7000);
+        return mycAccountElement;
+    }
+
+
 
     public void Search(String criteria) throws InterruptedException {
         searchFieldElement().sendKeys(criteria);
         System.out.println("Search criteria entered: " + criteria);
     }
+
+    public void Scan() throws InterruptedException {
+        scanButton().click();
+        //System.out.println("Scanned code: " + searchFieldElement().getText());
+    }
     public void SearchResultClick() throws InterruptedException {
         searchResultElement().click();
+    }
+    public void ClearSearchResult() throws InterruptedException {
+        clearSearchButtonElement().click();
     }
     public void FourthSearchResultClick() throws InterruptedException {
         fourthSearchResultElement().click();
     }
-
     public void AddButtonClick() throws InterruptedException {
         addButtonElement().click();
     }
@@ -77,19 +98,13 @@ public class ShelfLabelPage {
             System.out.println(ANSI_GREEN + "Hyllkant success! :)"+ ANSI_RESET);
         }
         else {
-            System.out.println("Hyllkant not succes, Check error message :(");
+            System.out.println("Hyllkant not success, Check error message :(");
         }
-
     }
     public void MakeNewOrderButtonClick() throws InterruptedException {
         makeNewOrderButtonElement().click();
     }
-
-
-
-
-
-    //public void orderAShelflabel(String criteria) throws InterruptedException {
-      // Search(criteria);
-    //}
+    public void clickMyAccount() throws InterruptedException {
+        myAccount().click();
+    }
 }

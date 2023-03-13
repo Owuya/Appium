@@ -1,79 +1,61 @@
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
 
-import java.util.Calendar;
-
-public class RegressionTests extends Appium {
-
+public class SpecificTests extends Appium {
     private static final LoginPage loginPage = new LoginPage();
-    //private static final InventoryOnboardPage inventoryOnboardPage = new InventoryOnboardPage();
+    private static final InventoryOnboardPage inventoryOnboardPage = new InventoryOnboardPage();
     private static final HomePage homePage = new HomePage();
-    private static final DeliveriesPage deliveriesPage = new DeliveriesPage();
-    private static final QuickOrderPage quickOrderPage = new QuickOrderPage();
-    private static final StockCountPage stockCountPage = new StockCountPage();
     private static final MyAccountPage myAccountPage = new MyAccountPage();
     private static final AddCustomerPage addCustomerPage = new AddCustomerPage();
     private static final ShelfLabelPage shelflablePage = new ShelfLabelPage();
     private static final CustomerPage customerPage = new CustomerPage();
 
-    @BeforeTest
-    public void Start() {System.out.println("Time started: " + Calendar.getInstance().getTime());}
-
     @Test(description = "Loggar in med en kund och klickar förbi onboarding", priority = 1)
     public void LoginAndOnboarding() throws InterruptedException {
         loginPage.Login("325942", "Menigo123");
-        WaitForContent(7000);
+        //loginPage.Login("444867", "444867");
+        Thread.sleep(7000);
         //loginPage.Onboarding();
     }
-    @Test(description = "Navigera till alla sidor", priority = 2)
-    public void NavigateBottomNavThroughPages() throws InterruptedException {
-        //Thread.sleep(3000);
-        homePage.clickDeliveries();
-        WaitForContent(7000);
-        deliveriesPage.clickQuickOrder();
-        WaitForContent(7000);
-        quickOrderPage.clickStockCount();
-        WaitForContent(7000);
-        stockCountPage.clickMyAccount();
-        WaitForContent(4000);
-    }
-
-    @Test(description = "Loggar in med en masterkund och loggar sedan in med alla Subkunder", priority = 3)
+    @Test(description = "Loggar in med en masterkund och loggar sedan in med alla Subkunder", priority = 2)
     public void LoginWithMasterAndSubCustomers() throws InterruptedException {
-
+        Thread.sleep(3000);
+        homePage.clickMyAccount();
         myAccountPage.ClickAddCustomerNumberMenu();
         addCustomerPage.Login("444867", "444867");
         System.out.println("Logged in with 444867");
         myAccountPage.ClickAddCustomerNumberMenu();
         addCustomerPage.Login("570431", "570431");
         System.out.println("Logged in with 570431");
-        WaitForContent(7000);
+        Thread.sleep(7000);
         myAccountPage.ClickAddCustomerNumberMenu2();
         addCustomerPage.Login("404320", "404320");
         System.out.println("Logged in with 404320");
-        WaitForContent(7000);
+        Thread.sleep(7000);
         myAccountPage.ClickAddCustomerNumberMenu2();
         addCustomerPage.Login("434477", "434477");
         System.out.println("Logged in with 434477");
-        WaitForContent(3000);
+        Thread.sleep(3000);
+        homePage.clickMyAccount();
     }
 
-    @Test(description = "Som en SVH kund 570431, beställer shelflabel", priority = 4)
+    @Test(description = "Som en SVH kund 570431, beställer shelflabel", priority = 3)
     public void OrderOneShelflable() throws InterruptedException {
-
+        //Thread.sleep(3000);
+        homePage.clickMyAccount();
         myAccountPage.ClickShelflableMenu();
         shelflablePage.Search("Läkerol");
         //shelflablePage.Scan();
         //Thread.sleep(10000);
         shelflablePage.SearchResultClick();
         shelflablePage.AddButtonClick();
-        WaitForContent(3000);
+        Thread.sleep(3000);
         shelflablePage.OrderButtonClick();
         shelflablePage.Email("marcus.johansson@menigo.se");
         shelflablePage.SendOrderClick();
         shelflablePage.CheckSuccess();
     }
 
-    @Test(description = "Beställ en Hyllkantsetikett med olika sätt: Barcode, Helt namn, etc - 570431", priority = 5)
+    @Test(description = "Beställ en Hyllkantsetikett med olika sätt: Barcode, Helt namn, etc - 570431", priority = 4)
     public void OrderMoreShelflables() throws InterruptedException {
 
         shelflablePage.MakeNewOrderButtonClick();
@@ -93,6 +75,7 @@ public class RegressionTests extends Appium {
 
         shelflablePage.Search("Standardmjölk");
         shelflablePage.FourthSearchResultClick();
+        //shelflablePage.AddButtonClick();
 
         shelflablePage.Search("Ahlgrens bilar");
         shelflablePage.SearchResultClick();
@@ -104,18 +87,17 @@ public class RegressionTests extends Appium {
         shelflablePage.CheckSuccess();
     }
 
-    @Test(description = "Login with another SVH customer and select account to order Shelflabel with", priority = 6)
+    @Test(description = "Login with another SVH customer and select account to order Shelflabel with", priority = 5)
     public void LoginAndOrderShelflabel() throws InterruptedException {
-        WaitForContent(3000);
-        shelflablePage.clickMyAccount();
+        Thread.sleep(3000);
+        homePage.clickMyAccount();
         myAccountPage.ClickAddCustomerNumberMenu2();
-        addCustomerPage.Login("570592", "570592");
-        System.out.println("Waiting for login action: 7000 milliseconds");
-        WaitForContent(7000);
-        System.out.println("Logged in with 570592");
-        myAccountPage.ClickShelflableMenuAfterLogin();
+        addCustomerPage.Login("520917", "520917");
+        System.out.println("Logged in with 520917");
+        Thread.sleep(5000);
+        myAccountPage.ClickShelflableMenu();
         myAccountPage.ClickSelectCustomer();
-        shelflablePage.Search("Risgröt");
+        shelflablePage.Search("Läkerol");
         shelflablePage.SearchResultClick();
         shelflablePage.AddButtonClick();
         shelflablePage.OrderButtonClick();
@@ -124,57 +106,26 @@ public class RegressionTests extends Appium {
         shelflablePage.CheckSuccess();
     }
 
-    //----------------------------  Inventory test cases  -------------------------------//
-
-    @Test(description = "Navigerar till Inventering och tar bort en produkt", priority = 7)
-    public void NavigateToInventoryAndRemoveProduct() throws InterruptedException {
-
-        shelflablePage.clickMyAccount();
-        myAccountPage.clickStockCountPage();
-        WaitForContent(4000);
-        stockCountPage.clickOnCustomer();
-        stockCountPage.clickOnPantry();
-        WaitForContent(7000);
-        stockCountPage.openProductModal();
-        stockCountPage.removeProduct();
-        WaitForContent(7000);
-        //stockCountPage.checkRemovedStatus();
-    }
-    @Test(description = "Lägger till en produkt", priority = 8)
-    public void AddProductToPantry() throws InterruptedException {
-
-        stockCountPage.clickAndenterArticleSearch();
-        WaitForContent(2000);
-        stockCountPage.searchCriteria("111910");
-        stockCountPage.openProductModal();
-        stockCountPage.clickAddProduct();
-        WaitForContent(6000);
-        //stockCountPage.checkAddedStatus();
-    }
-
-    //----------------------------  Logout test cases  -------------------------------//
-    @Test(description = "Logout customer 444867 from customer page", priority = 9)
+    @Test(description = "Logout a customer from customer page", priority = 6)
     public void LogoutACustomerFromCustomerPage() throws InterruptedException {
 
-        stockCountPage.clickMyAccount();
+        homePage.clickMyAccount();
         myAccountPage.clickOnCustomer();
         customerPage.clickLogout();
         customerPage.clickLogoutButton();
     }
 
-    @Test(description = "Logout customer 570431 from the list on My account page", priority = 10)
+    @Test(description = "Logout a customer from list on my account page", priority = 7)
     public void LogoutACustomerFromMyAccountPage() throws InterruptedException {
+        ////*[contains(@class,'android.view.ViewGroup')][contains(@resource-id,'LogoutSingleContactButton_570431')]
+        Thread.sleep(3000);
         myAccountPage.logoutSpecificCustomer("570431");
+        Thread.sleep(3000);
     }
 
-    @Test(description = "Logout all customers", priority = 11)
+    @Test(description = "Logout all customers", priority = 8)
     public void LogoutAllCustomers() throws InterruptedException {
-        //homePage.clickMyAccount();
+        homePage.clickMyAccount();
         myAccountPage.logout();
-    }
-
-    @AfterTest
-    public void Done() {
-        System.out.println("Time Done: " + Calendar.getInstance().getTime());
     }
 }
