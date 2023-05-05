@@ -2,36 +2,32 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 
 public class Appium {
-    public static AppiumDriver driver;
-    public WebDriverWait wait;
-    public Duration duration = Duration.ofSeconds(30);
 
-    public Appium() {
+    public static AppiumDriver driver;
+    public static String appPackage;
+
+    public Appium() {}
+
+    protected static void setAppPackage(String value) {
+        appPackage = value;
     }
 
-    @BeforeSuite
+    @BeforeTest
     public void setup() throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
 
         caps.setCapability("deviceName", "Pixel 5 API 31");
-        //caps.setCapability("deviceName", "8 Fold-out API 31");
-        //caps.setCapability("deviceName", "XQ-AT51");
         caps.setCapability("platformName", "Android");
         caps.setCapability("platformVersion", "12.0");
-        //caps.setCapability("platformVersion", "11.0");
-        //caps.setCapability("app", "C://Users//1111//Downloads//59-1.apk");
-        caps.setCapability("appPackage", "com.menigo.menigogobeta");
-        //caps.setCapability("appPackage", "com.menigo.menigogo");
+        caps.setCapability("appPackage", appPackage);
         caps.setCapability("appActivity", "com.menigo.menigogo.MainActivity");
         caps.setCapability("automationName", "Appium");
         caps.setCapability("noReset", true);
@@ -44,6 +40,8 @@ public class Appium {
         System.out.println("appPackage: " + caps.getCapability("appPackage"));
 
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), caps);
+        //driver = new UiAutomator2Options()
+        // AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), caps);
     }
 
     public void WaitForElementByXpath(String element, int sleep) throws InterruptedException {

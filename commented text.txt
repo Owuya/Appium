@@ -45,7 +45,7 @@
 	
 	
 	
-	        //System.out.println("-------------------------");
+	    //System.out.println("-------------------------");
         //System.out.println("isEnabled: " + logoutFromAppButtonElement().isEnabled());
         //System.out.println("isDisplayed: " + logoutFromAppButtonElement().isDisplayed());
         //System.out.println("isSelected: " + logoutFromAppButtonElement().isSelected());

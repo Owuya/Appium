@@ -90,7 +90,7 @@ No license
 
 ## Acknowledgments
 
-* **Björn Stålhammar, For startup and helping setup project, And all the help**
+* **Björn Stålhammar, For startup and helping setup project, And all the help along the way**
 <!--
 * Hat tip to anyone whose code was used
 * Inspiration

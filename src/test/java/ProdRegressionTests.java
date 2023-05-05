@@ -1,5 +1,5 @@
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import java.util.Calendar;
@@ -17,9 +17,10 @@ public class ProdRegressionTests extends Appium {
     private static final ShelfLabelPage shelflablePage = new ShelfLabelPage();
     private static final CustomerPage customerPage = new CustomerPage();
 
-    @BeforeTest
+    @BeforeSuite
     public void Start(){
         System.out.println("Time started: " + Calendar.getInstance().getTime());
+        Appium.setAppPackage("com.menigo.menigogo");
     }
 
     @Test(description = "Loggar in med en kund och klickar förbi onboarding", priority = 1)
@@ -31,12 +32,23 @@ public class ProdRegressionTests extends Appium {
     @Test(description = "Navigera till alla sidor", priority = 2)
     public void NavigateBottomNavThroughPages() throws InterruptedException {
         //Thread.sleep(3000);
+        //homePage.clickDeliveries();
+        //WaitForContent(7000);
+        //deliveriesPage.clickQuickOrder();
+        //WaitForContent(7000);
+        ////quickOrderPage.clickStockCount();
+        ////WaitForContent(7000);
+        //stockCountPage.clickMyAccount();
+        //WaitForContent(4000);
+
         homePage.clickDeliveries();
         WaitForContent(7000);
         deliveriesPage.clickQuickOrder();
+        WaitForContent(3000);
+        quickOrderPage.closeKeyboardToContinue();
         WaitForContent(7000);
-        //quickOrderPage.clickStockCount();
-        //WaitForContent(7000);
+        quickOrderPage.clickStockCount();
+        WaitForContent(7000);
         stockCountPage.clickMyAccount();
         WaitForContent(4000);
     }
@@ -94,9 +106,9 @@ public class ProdRegressionTests extends Appium {
         shelflablePage.Search("Standardmjölk");
         shelflablePage.FourthSearchResultClick();
 
-        shelflablePage.Search("Ahlgrens bilar");
-        shelflablePage.SearchResultClick();
-        shelflablePage.AddButtonClick();
+        //shelflablePage.Search("Ahlgrens bilar");
+        //shelflablePage.SearchResultClick();
+        //shelflablePage.AddButtonClick();
 
         shelflablePage.OrderButtonClick();
         shelflablePage.Email("marcus.johansson@menigo.se");

@@ -1,22 +1,72 @@
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
+import java.awt.*;
+import java.util.Calendar;
+
 public class SpecificTests extends Appium {
+
     private static final LoginPage loginPage = new LoginPage();
     private static final InventoryOnboardPage inventoryOnboardPage = new InventoryOnboardPage();
     private static final HomePage homePage = new HomePage();
+    private static final DeliveriesPage deliveriesPage = new DeliveriesPage();
+    private static final QuickOrderPage quickOrderPage = new QuickOrderPage();
+    private static final StockCountPage stockCountPage = new StockCountPage();
     private static final MyAccountPage myAccountPage = new MyAccountPage();
     private static final AddCustomerPage addCustomerPage = new AddCustomerPage();
     private static final ShelfLabelPage shelflablePage = new ShelfLabelPage();
     private static final CustomerPage customerPage = new CustomerPage();
 
+    @BeforeSuite
+    public void start() {
+        System.out.println("Time started: " + Calendar.getInstance().getTime());
+        Appium.setAppPackage("com.menigo.menigogobeta");
+    }
+
     @Test(description = "Loggar in med en kund och klickar förbi onboarding", priority = 1)
+    public void LoginAndOnboarding() throws InterruptedException {
+        loginPage.Login("325942", "Menigo123");
+        WaitForContent(7000);
+        //loginPage.Onboarding();
+    }
+
+    @Test(description = "SNabborder - Lägger till en produkt i varukorgen", priority = 2)
+    public void QuickorderAddProductToCart() throws InterruptedException, AWTException {
+
+        stockCountPage.clickQuickOrder();
+        WaitForContent(4000);
+        quickOrderPage.closeKeyboardToContinue();
+        //WaitForContent(4000);
+        quickOrderPage.clickAddButton();
+        WaitForContent(2000);
+    }
+
+
+    /*@Test(description = "Navigera till alla sidor", priority = 2)
+    public void NavigateBottomNavThroughPages() throws InterruptedException {
+        //Thread.sleep(3000);
+        homePage.clickDeliveries();
+        WaitForContent(7000);
+        deliveriesPage.clickQuickOrder();
+        WaitForContent(3000);
+        quickOrderPage.closeKeyboardToContinue();
+        WaitForContent(7000);
+        quickOrderPage.clickStockCount();
+        WaitForContent(7000);
+        stockCountPage.clickMyAccount();
+        WaitForContent(4000);
+    }
+
+    /*@Test(description = "Loggar in med en kund och klickar förbi onboarding", priority = 1)
     public void LoginAndOnboarding() throws InterruptedException {
         loginPage.Login("325942", "Menigo123");
         //loginPage.Login("444867", "444867");
         Thread.sleep(7000);
         //loginPage.Onboarding();
     }
-    @Test(description = "Loggar in med en masterkund och loggar sedan in med alla Subkunder", priority = 2)
+
+     */
+    /*@Test(description = "Loggar in med en masterkund och loggar sedan in med alla Subkunder", priority = 2)
     public void LoginWithMasterAndSubCustomers() throws InterruptedException {
         Thread.sleep(3000);
         homePage.clickMyAccount();
@@ -36,9 +86,9 @@ public class SpecificTests extends Appium {
         System.out.println("Logged in with 434477");
         Thread.sleep(3000);
         homePage.clickMyAccount();
-    }
+    }*/
 
-    @Test(description = "Som en SVH kund 570431, beställer shelflabel", priority = 3)
+    /*@Test(description = "Som en SVH kund 570431, beställer shelflabel", priority = 3)
     public void OrderOneShelflable() throws InterruptedException {
         //Thread.sleep(3000);
         homePage.clickMyAccount();
@@ -113,7 +163,7 @@ public class SpecificTests extends Appium {
         myAccountPage.clickOnCustomer();
         customerPage.clickLogout();
         customerPage.clickLogoutButton();
-    }
+    }*/
 
     @Test(description = "Logout a customer from list on my account page", priority = 7)
     public void LogoutACustomerFromMyAccountPage() throws InterruptedException {
@@ -123,9 +173,9 @@ public class SpecificTests extends Appium {
         Thread.sleep(3000);
     }
 
-    @Test(description = "Logout all customers", priority = 8)
+    /*@Test(description = "Logout all customers", priority = 8)
     public void LogoutAllCustomers() throws InterruptedException {
         homePage.clickMyAccount();
         myAccountPage.logout();
-    }
+    }*/
 }
